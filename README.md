@@ -1,2 +1,8 @@
-# Hexo 
-### 基于hexo-next主题简约风格的一款博客面板。由静态页面生成，用于记录个人所学以及遇到的技术问题等。
+## Hexo Blog
+
+**基于Hexo的blog**
+
+### 运行
+1. npm i
+2. 本地预览 hexo s 
+3. 部署 hexo g -d
