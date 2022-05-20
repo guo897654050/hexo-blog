@@ -6,7 +6,7 @@ tags: 服务器部署 hexo
 
 ### hexo部署到服务器的过程记录
 
-  重启了很久之前用的博客，并将其部署到自己的服务器上。
+  重启了很久之前用的博客，并将其部署到自己的腾讯云服务器上。
 1. 由于我们使用git部署，需要在服务器上将本地电脑下的`~/./ssh/id_ras.pub`复制到服务器上的`./ssh/authorized_keys`文件下。这样可以进行免密登录。
 2. 服务器上在家目录`~/project`下新建俩文件夹`hexo`和`repo`，其中`repo`是git自动deploy的关键。
    1. 在`repo`下输入命令`git init --bare hexo.git`。
