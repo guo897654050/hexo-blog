@@ -5,7 +5,7 @@
 # Site
 title: 风居住的街道
 subtitle:
-description: 悠悠苍天，何薄于我 -诸葛
+description: 每一步都是更接近目标的一步！
 keywords:
 author: 大长腿鲁班
 language: zh-Hans
@@ -85,5 +85,5 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: guoxy@65.49.197.231:hexo.git
+  repo: xyguo@119.45.162.140:/home/xyguo/project/repo/hexo.git
   branch: master
