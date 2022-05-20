@@ -20,3 +20,4 @@ tags: 服务器部署 hexo
    
 #### 问题记录
   本地`hexo g -d`时候，记得使用`node12`14会报错，查了一下是hexo和node@14不兼容。
+  参考地址：[将hexo部署到服务器](https://hjxlog.com/posts/20191130a1.html)
