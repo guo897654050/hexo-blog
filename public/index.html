@@ -252,6 +252,175 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://windystreet.net/2022/07/06/ts的使用/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="大长腿鲁班">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="风居住的街道">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2022/07/06/ts的使用/" itemprop="url">typescript的使用及总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-07-06T19:47:08+08:00">
+                22-07-06 19:47
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2022/07/06/ts的使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2022/07/06/ts的使用/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="ts的infer的使用"><a href="#ts的infer的使用" class="headerlink" title="ts的infer的使用"></a>ts的infer的使用</h3><ol>
+<li><code>infer</code>必须搭配<code>extends</code>使用。</li>
+<li>可以把<code>infer</code>理解为占位符。</li>
+</ol>
+<p>例子：promise的类型推断。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">type ExampleType = Promise&lt;string&gt;</span><br><span class="line"></span><br><span class="line">type Result = &lt;MyAwaited&lt;ExampleType&gt; // string</span><br><span class="line"></span><br><span class="line">// 请实现MyAwaited类型来获取promise的T类型</span><br><span class="line"></span><br><span class="line">type MyAwaited&lt;T&gt; = T extends promise&lt;infer R&gt;</span><br><span class="line">    ? R extends Promise&lt;any&gt; </span><br><span class="line">      ? MyAwaited&lt;R&gt;</span><br><span class="line">      : R</span><br><span class="line">    : never</span><br></pre></td></tr></table></figure></p>
+<p>从上述例子可以看出<code>infer</code>的使用，首先使用<code>extends</code>关键字， 同时推断出R为promise<t>类型，若仍未为promise<any>类型，则递归执行。</any></t></p>
+<h3 id="ts的联合类型的使用"><a href="#ts的联合类型的使用" class="headerlink" title="ts的联合类型的使用"></a>ts的联合类型的使用</h3><ol>
+<li>需要注意的是当联合类型使用<code>extends</code>会进行分发，相当于每个联合类型都会执行<code>extends</code>方法。</li>
+<li>想要不进行联合类型的分发可以使用<code>[T]</code>包裹。</li>
+</ol>
+<p>分别看两个例子,首先是联合类型的分发。</p>
+<ol>
+<li>第一个例子<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 描述，将联合类型转化为交叉类型。</span><br><span class="line">type UnionToIntersection&lt;U&gt; =  (U extends any ? (args: U) =&gt; void : never) extends </span><br><span class="line">  (args: infer R) =&gt; void ? R :never</span><br><span class="line">// 测试用例</span><br><span class="line">type U0 = UnionToIntersection&lt;string | number&gt; // never</span><br><span class="line">type U1 = UnionToIntersection&lt;&#123; name: string &#125; | &#123; age: number &#125;&gt; // &#123; name: string; &#125; &amp; &#123; age: number; &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>我们将例子拆开看，以<code>U0</code>为例，U的联合类型每一个执行一次这个方法<code>(U extends any ? (args: U) =&gt; void : never)</code>则会生成<code>(args: string) =&gt; void</code>|<code>(args: number) =&gt; void</code>,同时推断出一个类型R，能同时满足上述的要求,那么满足该条件一定是<code>string&amp;number</code>推断出为<code>never</code>。</p>
+<ol start="2">
+<li>第二个例子，<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 描述，实现一个`IsNever`工具类型，判断指定的类型是否为 never 类型</span><br><span class="line">type IsNever = [T] extends [never] ? true : false;</span><br><span class="line">type I0 = IsNever&lt;never&gt; // true</span><br><span class="line">type I1 = IsNever&lt;never | string&gt; // false</span><br><span class="line">type I2 = IsNever&lt;null&gt; // false</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>上述将联合类型使用<code>[]</code>包裹，那么就不会进行分发，<code>string|never</code> 不可能extends<code>never</code>因此返回false。</p>
+<h3 id="ts内置类型的实现"><a href="#ts内置类型的实现" class="headerlink" title="ts内置类型的实现"></a>ts内置类型的实现</h3><ol>
+<li><p>Pick</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">type Pick&lt;T, keys extends keyof T&gt; = &#123;</span><br><span class="line">  [key in keys]: T[key]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type Foo = &#123;</span><br><span class="line">  a: 1,</span><br><span class="line">  b: 2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type q = Pick&lt;Foo, &apos;a&apos;&gt;, // &#123;a: 1&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Omit</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">type Omit&lt;T, keys extends keyof T&gt; = Pick&lt;T, Exclude&lt;T, keys&gt;&gt;</span><br><span class="line"></span><br><span class="line">type Foo = &#123;</span><br><span class="line">  a: 1,</span><br><span class="line">  b: 2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type q = Omit&lt;Foo, &apos;a&apos;&gt;, // &#123;b: 2&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Partial</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">type Partial&lt;T&gt; = &#123;</span><br><span class="line">  [K in keyof T]?: T[K]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type Foo = &#123;</span><br><span class="line">  a: 1,</span><br><span class="line">  b: 2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type q = Partial&lt;Foo&gt;, // &#123;a?:1, b?: 2&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Exclude,联合类型分发</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">type Exclude&lt;T, U&gt; = T exntends U ? never : T;</span><br><span class="line"></span><br><span class="line">type Foo = &#123;</span><br><span class="line">  a: 1,</span><br><span class="line">  b: 2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type q = Exclude&lt;keyof Foo, &apos;a&apos;&gt;, // &#123; b: 2&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Required</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">type Required&lt;T&gt; = &#123;</span><br><span class="line">  [K in keyof T]-?: T[K]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type Foo = &#123;</span><br><span class="line">  a?: 1,</span><br><span class="line">  b?: 2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type q = Required&lt;Foo&gt; // &#123;a: 1, b: 2&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>returnType</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">type ReturnType&lt;T&gt; = T extends (args: any) =&gt; infer R ? R : never;</span><br><span class="line"></span><br><span class="line">function foo(x: number): Array&lt;number&gt; &#123;</span><br><span class="line">  return [x];</span><br><span class="line">&#125;</span><br><span class="line">type fn = ReturnType&lt;typeof foo&gt;; // Array&lt;number&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://windystreet.net/2022/05/20/hexo部署/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1694,172 +1863,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://windystreet.net/2019/03/19/es6-1/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="大长腿鲁班">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="风居住的街道">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/19/es6-1/" itemprop="url">es6-1</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-19T20:05:24+08:00">
-                19-03-19 20:05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/ES6/" itemprop="url" rel="index">
-                    <span itemprop="name">ES6</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/03/19/es6-1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/19/es6-1/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h4><ul>
-<li>数字</li>
-<li>字符串</li>
-<li>布尔</li>
-<li>null</li>
-<li>undefined</li>
-<li>object</li>
-<li>符号(symbol)</li>
-</ul>
-<h5 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h5><p>增加了模板字符串，避免经常使用+<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">例如</span><br><span class="line">let a = &apos;dog&apos;</span><br><span class="line">let b = &apos;lili&apos;</span><br><span class="line">let message = `this is my $&#123;a&#125; named $&#123;b&#125;` ##反丿号</span><br></pre></td></tr></table></figure></p>
-<p>多行字符串也可使用反丿号包裹<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const a = `line1</span><br><span class="line">            line2`</span><br></pre></td></tr></table></figure></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/03/19/es6-1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1912,7 +1915,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

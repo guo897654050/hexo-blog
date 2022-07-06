@@ -1,3 +1,9 @@
+---
+title: typescript的使用及总结
+date: 2022-07-06 19:47:08
+tags:
+---
+
 ### ts的infer的使用
 1.  `infer`必须搭配`extends`使用。
 2.  可以把`infer`理解为占位符。

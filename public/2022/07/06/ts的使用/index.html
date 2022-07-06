@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="docker,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -79,18 +79,17 @@
 
 
 
-<meta name="description" content="记录docker-compose的使用1.使用docker-compose的目的: 我么一般把web和数据库进行分离，每个应用程序作为一个docker的镜像来使用，这也是docker官方推荐的做法。 2.docker-compose是官方的编排应用。官方有django的设置。今天你测试了以下自己的环境。记录一下。 3.首先我们使用的是django和postgresql数据库。然后需要拉取postg">
-<meta name="keywords" content="docker">
+<meta name="description" content="ts的infer的使用 infer必须搭配extends使用。 可以把infer理解为占位符。  例子：promise的类型推断。1234567891011type ExampleType = Promise&amp;lt;string&amp;gt;type Result = &amp;lt;MyAwaited&amp;lt;ExampleType&amp;gt; // string// 请实现MyAwaited类型来获取promis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="docker-compose的使用">
-<meta property="og:url" content="http://windystreet.net/2019/04/29/docker-compose的使用/index.html">
+<meta property="og:title" content="typescript的使用及总结">
+<meta property="og:url" content="http://windystreet.net/2022/07/06/ts的使用/index.html">
 <meta property="og:site_name" content="风居住的街道">
-<meta property="og:description" content="记录docker-compose的使用1.使用docker-compose的目的: 我么一般把web和数据库进行分离，每个应用程序作为一个docker的镜像来使用，这也是docker官方推荐的做法。 2.docker-compose是官方的编排应用。官方有django的设置。今天你测试了以下自己的环境。记录一下。 3.首先我们使用的是django和postgresql数据库。然后需要拉取postg">
+<meta property="og:description" content="ts的infer的使用 infer必须搭配extends使用。 可以把infer理解为占位符。  例子：promise的类型推断。1234567891011type ExampleType = Promise&amp;lt;string&amp;gt;type Result = &amp;lt;MyAwaited&amp;lt;ExampleType&amp;gt; // string// 请实现MyAwaited类型来获取promis">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2022-05-20T02:24:20.541Z">
+<meta property="og:updated_time" content="2022-07-06T11:47:48.928Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="docker-compose的使用">
-<meta name="twitter:description" content="记录docker-compose的使用1.使用docker-compose的目的: 我么一般把web和数据库进行分离，每个应用程序作为一个docker的镜像来使用，这也是docker官方推荐的做法。 2.docker-compose是官方的编排应用。官方有django的设置。今天你测试了以下自己的环境。记录一下。 3.首先我们使用的是django和postgresql数据库。然后需要拉取postg">
+<meta name="twitter:title" content="typescript的使用及总结">
+<meta name="twitter:description" content="ts的infer的使用 infer必须搭配extends使用。 可以把infer理解为占位符。  例子：promise的类型推断。1234567891011type ExampleType = Promise&amp;lt;string&amp;gt;type Result = &amp;lt;MyAwaited&amp;lt;ExampleType&amp;gt; // string// 请实现MyAwaited类型来获取promis">
 
 
 
@@ -120,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://windystreet.net/2019/04/29/docker-compose的使用/">
+  <link rel="canonical" href="http://windystreet.net/2022/07/06/ts的使用/">
 
 
 
 
 
-  <title>docker-compose的使用 | 风居住的街道</title>
+  <title>typescript的使用及总结 | 风居住的街道</title>
   
 
 
@@ -253,7 +252,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://windystreet.net/2019/04/29/docker-compose的使用/">
+    <link itemprop="mainEntityOfPage" href="http://windystreet.net/2022/07/06/ts的使用/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="大长腿鲁班">
@@ -270,7 +269,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">docker-compose的使用</h1>
+          <h1 class="post-title" itemprop="name headline">typescript的使用及总结</h1>
         
 
         <div class="post-meta">
@@ -282,8 +281,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-29T17:50:06+08:00">
-                19-04-29 17:50
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-07-06T19:47:08+08:00">
+                22-07-06 19:47
               </time>
             
 
@@ -293,28 +292,6 @@
           </span>
 
           
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/docker/" itemprop="url" rel="index">
-                    <span itemprop="name">docker</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -323,8 +300,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/04/29/docker-compose的使用/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/29/docker-compose的使用/" itemprop="commentCount"></span>
+                <a href="/2022/07/06/ts的使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2022/07/06/ts的使用/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -352,25 +329,46 @@
       
 
       
-        <h2 id="记录docker-compose的使用"><a href="#记录docker-compose的使用" class="headerlink" title="记录docker-compose的使用"></a><center>记录docker-compose的使用</center></h2><p>1.使用docker-compose的目的: 我么一般把web和数据库进行分离，每个应用程序作为一个docker的镜像来使用，这也是docker官方推荐的做法。</p>
-<p>2.docker-compose是官方的编排应用。官方有django的设置。今天你测试了以下自己的环境。记录一下。</p>
-<p>3.首先我们使用的是django和postgresql数据库。然后需要拉取postgresql数据库。先看一下<code>docker-compose.yaml</code>文件。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">version: &apos;3&apos;</span><br><span class="line"></span><br><span class="line">services:</span><br><span class="line">  db:</span><br><span class="line">    image: postgres #依赖的镜像，若没有则会自动从dockerhub获取</span><br><span class="line">    volumes:</span><br><span class="line">      - ./postgres-data:/var/lib/postgresql/data #挂载数据库文件，因为如果不挂载，那么容易起一停止数据就没了。运行的数据都会同步到这里</span><br><span class="line">  web:</span><br><span class="line">    build: .  #这部分是值相当于docker build，会自动寻找Dockerfile，.代表当前目录。</span><br><span class="line">    command: python manage.py runserver 0.0.0.0:8000  #启动命令。</span><br><span class="line">    volumes:</span><br><span class="line">      - .:/code  #也是挂载web的一些代码</span><br><span class="line">    ports:</span><br><span class="line">      - &quot;8000:8000&quot;  #端口映射</span><br><span class="line">    depends_on:</span><br><span class="line">      - db  #这里是依赖，那么就是先启动了db</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>4.由于使用的pqsql，所以我们在settings需要更改。<br>如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">DATABASES = &#123;</span><br><span class="line">    &apos;default&apos;: &#123;</span><br><span class="line">        &apos;ENGINE&apos;: &apos;django.db.backends.postgresql&apos;,</span><br><span class="line">        &apos;NAME&apos;: &apos;postgres&apos;,</span><br><span class="line">        &apos;USER&apos;: &apos;postgres&apos;,</span><br><span class="line">        &apos;HOST&apos;: &apos;db&apos;,</span><br><span class="line">        &apos;PORT&apos;: 5432,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<ol start="5">
-<li><p>这个时候已经可以启动了，并且使用的是pqsql，因为我需要导入一些测试数据。先运行这写代码,在包含yml的文件的目录下运行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker-compose config ##检查yml文件格式</span><br><span class="line">docker-compose config --service  ##显示service</span><br><span class="line">docker-compose run web python manage.py migrate</span><br><span class="line">docker-compose run web python manage.py loaddata test_auth.json</span><br><span class="line">docker-compose run web python manage.py loaddata test_management.json</span><br><span class="line">docker-comnpose run web python manage.py loaddata test_location.json</span><br><span class="line">docker-compose up ##启动</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>晚上加个班，加上一层nginx,Dockerfile如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">FROM nginx</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#对外暴露端口</span><br><span class="line">EXPOSE 8005</span><br><span class="line"></span><br><span class="line">RUN rm /etc/nginx/conf.d/default.conf</span><br><span class="line"></span><br><span class="line">ADD localhost.conf  /etc/nginx/conf.d/</span><br></pre></td></tr></table></figure>
+        <h3 id="ts的infer的使用"><a href="#ts的infer的使用" class="headerlink" title="ts的infer的使用"></a>ts的infer的使用</h3><ol>
+<li><code>infer</code>必须搭配<code>extends</code>使用。</li>
+<li>可以把<code>infer</code>理解为占位符。</li>
+</ol>
+<p>例子：promise的类型推断。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">type ExampleType = Promise&lt;string&gt;</span><br><span class="line"></span><br><span class="line">type Result = &lt;MyAwaited&lt;ExampleType&gt; // string</span><br><span class="line"></span><br><span class="line">// 请实现MyAwaited类型来获取promise的T类型</span><br><span class="line"></span><br><span class="line">type MyAwaited&lt;T&gt; = T extends promise&lt;infer R&gt;</span><br><span class="line">    ? R extends Promise&lt;any&gt; </span><br><span class="line">      ? MyAwaited&lt;R&gt;</span><br><span class="line">      : R</span><br><span class="line">    : never</span><br></pre></td></tr></table></figure></p>
+<p>从上述例子可以看出<code>infer</code>的使用，首先使用<code>extends</code>关键字， 同时推断出R为promise<t>类型，若仍未为promise<any>类型，则递归执行。</any></t></p>
+<h3 id="ts的联合类型的使用"><a href="#ts的联合类型的使用" class="headerlink" title="ts的联合类型的使用"></a>ts的联合类型的使用</h3><ol>
+<li>需要注意的是当联合类型使用<code>extends</code>会进行分发，相当于每个联合类型都会执行<code>extends</code>方法。</li>
+<li>想要不进行联合类型的分发可以使用<code>[T]</code>包裹。</li>
+</ol>
+<p>分别看两个例子,首先是联合类型的分发。</p>
+<ol>
+<li>第一个例子<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 描述，将联合类型转化为交叉类型。</span><br><span class="line">type UnionToIntersection&lt;U&gt; =  (U extends any ? (args: U) =&gt; void : never) extends </span><br><span class="line">  (args: infer R) =&gt; void ? R :never</span><br><span class="line">// 测试用例</span><br><span class="line">type U0 = UnionToIntersection&lt;string | number&gt; // never</span><br><span class="line">type U1 = UnionToIntersection&lt;&#123; name: string &#125; | &#123; age: number &#125;&gt; // &#123; name: string; &#125; &amp; &#123; age: number; &#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>localhost.conf如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    charset utf-8;</span><br><span class="line">    listen 8005;</span><br><span class="line">    server_name 127.0.0.1;</span><br><span class="line">    </span><br><span class="line">    error_log /var/nginx_error.log;</span><br><span class="line">    access_log /var/nginx_access.log;</span><br><span class="line"></span><br><span class="line">    location /static &#123;</span><br><span class="line">	alias /var/www/static/guacamole;</span><br><span class="line">    &#125;</span><br><span class="line">    location / &#123;</span><br><span class="line">	proxy_set_header Host $host;</span><br><span class="line">	proxy_pass http://web:8000;  ##注意这里写service web的名字，找了好久的错误</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>最后修改docker-compose.yml如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">version: &apos;3&apos;</span><br><span class="line"></span><br><span class="line">services:</span><br><span class="line">  db:</span><br><span class="line">    image: postgres</span><br><span class="line">    volumes:</span><br><span class="line">      - ./postgres-data:/var/lib/postgresql/data</span><br><span class="line">  web:</span><br><span class="line">    build: .</span><br><span class="line">    command: python manage.py runserver 0.0.0.0:8000</span><br><span class="line">    volumes:</span><br><span class="line">      - .:/code</span><br><span class="line">    depends_on:</span><br><span class="line">      - db</span><br><span class="line">  nginx:</span><br><span class="line">    build: ./nginx</span><br><span class="line">    volumes:</span><br><span class="line">      - /var/www/static/guacamole:/var/www/static/guacamole</span><br><span class="line">    ports:</span><br><span class="line">      - &quot;8005:8005&quot;</span><br><span class="line">    depends_on:</span><br><span class="line">      - web</span><br></pre></td></tr></table></figure></p>
-<p>最后执行 <code>docker-compose up</code>即可，访问127.0.01:8005便可以访问到服务。</p>
-<p>7.等待套一层gunicorn<br>8.有个bug，有时候数据库最后启动导致服务启动不了，等待查看原因。</p>
+<p>我们将例子拆开看，以<code>U0</code>为例，U的联合类型每一个执行一次这个方法<code>(U extends any ? (args: U) =&gt; void : never)</code>则会生成<code>(args: string) =&gt; void</code>|<code>(args: number) =&gt; void</code>,同时推断出一个类型R，能同时满足上述的要求,那么满足该条件一定是<code>string&amp;number</code>推断出为<code>never</code>。</p>
+<ol start="2">
+<li>第二个例子，<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 描述，实现一个`IsNever`工具类型，判断指定的类型是否为 never 类型</span><br><span class="line">type IsNever = [T] extends [never] ? true : false;</span><br><span class="line">type I0 = IsNever&lt;never&gt; // true</span><br><span class="line">type I1 = IsNever&lt;never | string&gt; // false</span><br><span class="line">type I2 = IsNever&lt;null&gt; // false</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>上述将联合类型使用<code>[]</code>包裹，那么就不会进行分发，<code>string|never</code> 不可能extends<code>never</code>因此返回false。</p>
+<h3 id="ts内置类型的实现"><a href="#ts内置类型的实现" class="headerlink" title="ts内置类型的实现"></a>ts内置类型的实现</h3><ol>
+<li><p>Pick</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">type Pick&lt;T, keys extends keyof T&gt; = &#123;</span><br><span class="line">  [key in keys]: T[key]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type Foo = &#123;</span><br><span class="line">  a: 1,</span><br><span class="line">  b: 2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type q = Pick&lt;Foo, &apos;a&apos;&gt;, // &#123;a: 1&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Omit</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">type Omit&lt;T, keys extends keyof T&gt; = Pick&lt;T, Exclude&lt;T, keys&gt;&gt;</span><br><span class="line"></span><br><span class="line">type Foo = &#123;</span><br><span class="line">  a: 1,</span><br><span class="line">  b: 2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type q = Omit&lt;Foo, &apos;a&apos;&gt;, // &#123;b: 2&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Partial</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">type Partial&lt;T&gt; = &#123;</span><br><span class="line">  [K in keyof T]?: T[K]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type Foo = &#123;</span><br><span class="line">  a: 1,</span><br><span class="line">  b: 2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type q = Partial&lt;Foo&gt;, // &#123;a?:1, b?: 2&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Exclude,联合类型分发</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">type Exclude&lt;T, U&gt; = T exntends U ? never : T;</span><br><span class="line"></span><br><span class="line">type Foo = &#123;</span><br><span class="line">  a: 1,</span><br><span class="line">  b: 2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type q = Exclude&lt;keyof Foo, &apos;a&apos;&gt;, // &#123; b: 2&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Required</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">type Required&lt;T&gt; = &#123;</span><br><span class="line">  [K in keyof T]-?: T[K]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type Foo = &#123;</span><br><span class="line">  a?: 1,</span><br><span class="line">  b?: 2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type q = Required&lt;Foo&gt; // &#123;a: 1, b: 2&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>returnType</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">type ReturnType&lt;T&gt; = T extends (args: any) =&gt; infer R ? R : never;</span><br><span class="line"></span><br><span class="line">function foo(x: number): Array&lt;number&gt; &#123;</span><br><span class="line">  return [x];</span><br><span class="line">&#125;</span><br><span class="line">type fn = ReturnType&lt;typeof foo&gt;; // Array&lt;number&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
 
       
     </div>
@@ -386,12 +384,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/docker/" rel="tag"># docker</a>
-          
-        </div>
-      
 
       
       
@@ -401,8 +393,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/22/tcp-ip-1/" rel="next" title="tcp/ip-1">
-                <i class="fa fa-chevron-left"></i> tcp/ip-1
+              <a href="/2022/05/20/hexo部署/" rel="next" title="hexo部署到服务器">
+                <i class="fa fa-chevron-left"></i> hexo部署到服务器
               </a>
             
           </div>
@@ -410,10 +402,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/08/前端跨域/" rel="prev" title="前端跨域">
-                前端跨域 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -566,7 +554,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#记录docker-compose的使用"><span class="nav-number">1.</span> <span class="nav-text">记录docker-compose的使用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ts的infer的使用"><span class="nav-number">1.</span> <span class="nav-text">ts的infer的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ts的联合类型的使用"><span class="nav-number">2.</span> <span class="nav-text">ts的联合类型的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ts内置类型的实现"><span class="nav-number">3.</span> <span class="nav-text">ts内置类型的实现</span></a></li></ol></div>
             
 
           </div>
