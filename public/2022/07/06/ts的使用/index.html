@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="风居住的街道">
 <meta property="og:description" content="ts的infer的使用 infer必须搭配extends使用。 可以把infer理解为占位符。  例子：promise的类型推断。1234567891011type ExampleType = Promise&amp;lt;string&amp;gt;type Result = &amp;lt;MyAwaited&amp;lt;ExampleType&amp;gt; // string// 请实现MyAwaited类型来获取promis">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2022-07-06T11:47:48.928Z">
+<meta property="og:updated_time" content="2022-07-06T11:49:16.363Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="typescript的使用及总结">
 <meta name="twitter:description" content="ts的infer的使用 infer必须搭配extends使用。 可以把infer理解为占位符。  例子：promise的类型推断。1234567891011type ExampleType = Promise&amp;lt;string&amp;gt;type Result = &amp;lt;MyAwaited&amp;lt;ExampleType&amp;gt; // string// 请实现MyAwaited类型来获取promis">
@@ -335,6 +335,7 @@
 </ol>
 <p>例子：promise的类型推断。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">type ExampleType = Promise&lt;string&gt;</span><br><span class="line"></span><br><span class="line">type Result = &lt;MyAwaited&lt;ExampleType&gt; // string</span><br><span class="line"></span><br><span class="line">// 请实现MyAwaited类型来获取promise的T类型</span><br><span class="line"></span><br><span class="line">type MyAwaited&lt;T&gt; = T extends promise&lt;infer R&gt;</span><br><span class="line">    ? R extends Promise&lt;any&gt; </span><br><span class="line">      ? MyAwaited&lt;R&gt;</span><br><span class="line">      : R</span><br><span class="line">    : never</span><br></pre></td></tr></table></figure></p>
 <p>从上述例子可以看出<code>infer</code>的使用，首先使用<code>extends</code>关键字， 同时推断出R为promise<t>类型，若仍未为promise<any>类型，则递归执行。</any></t></p>
+<a id="more"></a>
 <h3 id="ts的联合类型的使用"><a href="#ts的联合类型的使用" class="headerlink" title="ts的联合类型的使用"></a>ts的联合类型的使用</h3><ol>
 <li>需要注意的是当联合类型使用<code>extends</code>会进行分发，相当于每个联合类型都会执行<code>extends</code>方法。</li>
 <li>想要不进行联合类型的分发可以使用<code>[T]</code>包裹。</li>

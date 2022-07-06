@@ -24,6 +24,7 @@ type MyAwaited<T> = T extends promise<infer R>
 ```
 从上述例子可以看出`infer`的使用，首先使用`extends`关键字， 同时推断出R为promise<T>类型，若仍未为promise<any>类型，则递归执行。
 
+<!-- more -->
 ### ts的联合类型的使用
 1. 需要注意的是当联合类型使用`extends`会进行分发，相当于每个联合类型都会执行`extends`方法。
 2. 想要不进行联合类型的分发可以使用`[T]`包裹。
