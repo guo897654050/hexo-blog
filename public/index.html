@@ -332,7 +332,13 @@
 
       
         
-          <h3 id="ts的infer的使用"><a href="#ts的infer的使用" class="headerlink" title="ts的infer的使用"></a>ts的infer的使用</h3><ol>
+          <h3 id="ts数组上的方法"><a href="#ts数组上的方法" class="headerlink" title="ts数组上的方法"></a>ts数组上的方法</h3><p>如何理解<code>T[number]</code>和<code>T[&#39;length&#39;]</code></p>
+<ol>
+<li><code>T[number]</code>获取到数组的元素，为联合类型。</li>
+<li><code>T[&#39;length&#39;]</code>获取数组的长度。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">type A = [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;]</span><br><span class="line">type B = A[&apos;length&apos;] //3</span><br><span class="line">type C = A[number] // &apos;a&apos;| &apos;b&apos; | &apos;c&apos;</span><br><span class="line"></span><br><span class="line">type A = string[];</span><br><span class="line"></span><br><span class="line">type B = A[&apos;length&apos;]; // number;</span><br><span class="line">type C = A[number]; //string;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="ts的infer的使用"><a href="#ts的infer的使用" class="headerlink" title="ts的infer的使用"></a>ts的infer的使用</h3><ol>
 <li><code>infer</code>必须搭配<code>extends</code>使用。</li>
 <li>可以把<code>infer</code>理解为占位符。</li>
 </ol>

@@ -3,6 +3,21 @@ title: typescript的使用及总结
 date: 2022-07-06 19:47:08
 tags:
 ---
+### ts数组上的方法
+如何理解`T[number]`和`T['length']`
+1. `T[number]`获取到数组的元素，为联合类型。
+2. `T['length']`获取数组的长度。
+```
+type A = ['a', 'b', 'c']
+type B = A['length'] //3
+type C = A[number] // 'a'| 'b' | 'c'
+
+type A = string[];
+
+type B = A['length']; // number;
+type C = A[number]; //string;
+
+```
 
 ### ts的infer的使用
 1.  `infer`必须搭配`extends`使用。
