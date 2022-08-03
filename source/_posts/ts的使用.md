@@ -1,7 +1,7 @@
 ---
 title: typescript的使用及总结
 date: 2022-07-06 19:47:08
-tags:
+tags: typescript
 ---
 ### ts数组上的方法
 如何理解`T[number]`和`T['length']`
@@ -22,6 +22,7 @@ type C = A[number]; //string;
 ### ts的infer的使用
 1.  `infer`必须搭配`extends`使用。
 2.  可以把`infer`理解为占位符。
+3.  推断的结果必须在`extends`位true的分支使用。
 
 例子：promise的类型推断。
 ```
@@ -141,5 +142,42 @@ function foo(x: number): Array<number> {
   return [x];
 }
 type fn = ReturnType<typeof foo>; // Array<number>
+
+```
+
+### ts的as const 的使用
+1. `as const`会使得目标对象变成只读。
+2. `as const `会将类型变成元组。
+3. `string number boolean`  字面量类型都不会被扩展；
+```
+{
+    readonly name: "foo";
+    readonly age: 12;
+}
+*/
+const readonlyObj = { name: 'foo', age: 12 } as const
+
+/**
+readonly [1, "foo", "bar"],并非推断出的[number, string, string]类型
+*/
+const readonlyTuple = [1, 'foo', 'bar'] as const;
+
+```
+
+例子: 实现下述ts类型
+```
+
+declare function PromiseAll<T extends any[]>(value: readonly [...T]): Promise<{[K in keyof T ]: T[K] extends Promise<infer R> ? R : T[K]}>
+
+const promiseAllTest1 = PromiseAll([1, 2, 3] as const)
+const promiseAllTest2 = PromiseAll([1, 2, Promise.resolve(3)] as const)
+const promiseAllTest3 = PromiseAll([1, 2, Promise.resolve(3)])
+
+type cases = [
+  Expect<Equal<typeof promiseAllTest1, Promise<[1, 2, 3]>>>,
+  Expect<Equal<typeof promiseAllTest2, Promise<[1, 2, number]>>>,
+  Expect<Equal<typeof promiseAllTest3, Promise<[number, number, number]>>>,
+]
+
 
 ```
