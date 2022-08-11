@@ -18,6 +18,22 @@ type B = A['length']; // number;
 type C = A[number]; //string;
 
 ```
+### ts类型分发和收窄类型
+
+```
+type r1 = string | number extends string ? 1 : 2 // 2; 由于类型是收窄的，所以返回false;
+
+type R<T> = T extends string ? 1 : 2;
+type Test = string | number;
+type r2 = R<Test> // 2 | 1; 由于传入的泛型，是不确定的类型，因此联合类型会进行分发 string extends string | number extends number 
+```
+
+any收窄类型会有些特殊，any可以这么理解`any 代表了任何可能的类型，当我们使用 any extends 时，它包含了“让条件成立的一部分”，以及“让条件不成立的一部分”。`
+```
+type a = any extends number ? 1 : 2 // 1; 虽然类型收窄了，但是按照上述理解可以把any理解为string extends number | number extends number
+
+type b = any[] extends number[] ? 1 : 2 // 1;这里是由于[]包裹的对象不会进行分发，相当于any extends number 为true
+```
 
 ### ts的infer的使用
 1.  `infer`必须搭配`extends`使用。

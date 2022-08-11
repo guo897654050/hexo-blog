@@ -95,3 +95,47 @@ class Cat extends Animal {
 let cat = new Cat('Tom');
 cat.sayHi();
 ```
+
+### 变量使用public声明
+```
+通常写法
+class Info {
+	public name: string
+	private age: number
+	constructor() {
+		// ...
+	}
+}
+```
+
+
+但是我们可以直接定义constructor的内容
+```
+class Info {
+	constructor(
+    public name: string
+	  private age: number
+  ) {
+		// ...
+	}
+}
+```
+或者直接不适用构造函数，效果一致。且这种不需要构造函数传参。
+```
+class Info {
+  public name = '';
+  private age = 0;
+}
+
+```
+实例化时候无法为age添加属性，只是ts会报错，实际还是可以赋值。
+```
+const info = new Info();
+info.name = 'info'
+info.age = 13 //error
+```
+
+这种写法带来的便利。
+1. 声明了一个构造函数参数及其类型
+2. 声明了一个同名的公共属性
+3. 当我们 new 出该类的一个实例时，把该属性初始化为相应的参数值
